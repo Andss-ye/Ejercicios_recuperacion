@@ -1,0 +1,72 @@
+@startuml
+class Biblioteca {
+  -Prestamos: List
+}
+
+class Libro {
+  - autor: String
+  - ISBN: String
+  - editorial: String
+  + agregarLibro()
+  + consultarLibro()
+  + modificarLibro()
+  + eliminarLibro()
+}
+
+class Recurso {
+  - titulo: String
+  - cantidad: int
+  - año_de_publicacion: String
+  + agregarRecurso()
+  + consultarRecurso()
+  + modificarRecurso()
+  + eliminarRecurso()
+}
+
+class Revista {
+  - autor: String
+  - ISSN: String
+  - editorial: String
+  + agregarRevista()
+  + consultarRevista()
+  + modificarRevista()
+  + eliminarRevista()
+}
+
+class DVD {
+  - productora: String
+  - peso: int
+  + agregarDVD()
+  + consultarDVD()
+  + modificarDVD()
+  + elimidarDVD()
+}
+
+class Prestamo {
+  - recurso: Recurso
+  - usuario: Usuario
+  - fecha_prestamo: Date
+  - fecha_devolucion: Date
+  + agregarPrestamo()
+  + consultarPrestamo()
+  + modificarPrestamo()
+  + eliminarPrestamo()
+}
+
+class Usuario {
+  - nombre: String
+  - ID: Int
+  + agregarUsuario()
+  + consultarUsuario()
+  + modificarUsuario()
+  + elimidarUsuario()
+}
+
+Biblioteca -- Prestamo
+Usuario --|> Recurso 
+Libro --|> Recurso 
+Revista --|> Recurso 
+DVD --|> Recurso
+Prestamo *-- Recurso
+
+@enduml
